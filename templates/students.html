@@ -8,8 +8,13 @@
 </div>
 
 <div class="card">
-  <div class="search-bar">
-    <input type="text" id="search-input" placeholder="🔍  Cari nama atau NIM...">
+  <div class="search-row">
+    <div class="search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="search-input" placeholder="Cari nama atau NIM...">
+    </div>
   </div>
 
   <div class="table-wrapper">
@@ -19,13 +24,12 @@
           <th>No</th>
           <th>Nama</th>
           <th>NIM</th>
-          <th>Kode Kelas</th>
-          <th>Tanggal Daftar</th>
+          <th>Kelas</th>
           <th>Aksi</th>
         </tr>
       </thead>
       <tbody id="students-tbody">
-        <tr class="empty-row"><td colspan="6">Memuat data...</td></tr>
+        <tr class="empty-row"><td colspan="5">Memuat data...</td></tr>
       </tbody>
     </table>
   </div>

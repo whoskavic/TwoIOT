@@ -7,51 +7,71 @@
   <p>Daftarkan mahasiswa baru beserta data wajah</p>
 </div>
 
-<div class="two-col">
+<div class="reggrid">
 
   <!-- Left: Form -->
-  <div>
-    <div class="card">
-      <p class="section-title">Data Mahasiswa</p>
-
-      <div class="form-group">
-        <label for="nama">Nama Lengkap</label>
-        <input type="text" id="nama" placeholder="Masukkan nama lengkap">
+  <div class="card">
+    <div class="card__head">
+      <div class="card__icon card__icon--neutral">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 10h2"/><path d="M16 14h2"/>
+          <path d="M6.17 15a3 3 0 0 1 5.66 0"/>
+          <rect width="20" height="14" x="2" y="5" rx="2"/>
+          <circle cx="9" cy="11" r="2"/>
+        </svg>
       </div>
-      <div class="form-group">
-        <label for="nim">NIM</label>
-        <input type="text" id="nim" placeholder="Masukkan NIM">
-      </div>
-      <div class="form-group">
-        <label for="kode_kelas">Kode Kelas</label>
-        <input type="text" id="kode_kelas" placeholder="Contoh: TI-3A">
-      </div>
+      <h2>Data Mahasiswa</h2>
+    </div>
 
-      <div id="capture-status"></div>
+    <div class="form-group">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" placeholder="Masukkan nama lengkap">
+    </div>
+    <div class="form-group">
+      <label for="nim">NIM</label>
+      <input type="text" id="nim" placeholder="Masukkan NIM">
+    </div>
+    <div class="form-group">
+      <label for="kode_kelas">Kode Kelas</label>
+      <input type="text" id="kode_kelas" placeholder="Contoh: IF-3A, SI-2B, TI-1C">
+    </div>
 
-      <div style="display:flex; gap:12px; margin-top:22px; flex-wrap:wrap;">
-        <button class="btn btn-primary" id="btn-capture" onclick="captureWajah()">
-          📷 Capture Wajah
-        </button>
-        <button class="btn btn-success" id="btn-save" disabled onclick="simpanMahasiswa()">
-          💾 Simpan Mahasiswa
-        </button>
-      </div>
+    <div id="capture-status"></div>
+    <div id="form-status"></div>
 
-      <div id="form-status"></div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="resetForm()">Reset</button>
+      <button class="btn btn-success" id="btn-save" disabled onclick="simpanMahasiswa()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        Simpan Mahasiswa
+      </button>
     </div>
   </div>
 
   <!-- Right: Camera -->
-  <div>
-    <div class="card">
-      <p class="section-title">Preview Kamera</p>
-      <div class="camera-box">
-        <img src="/video_feed" alt="Camera Feed">
+  <div class="card">
+    <div class="card__head">
+      <div class="card__icon card__icon--primary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+          <circle cx="12" cy="13" r="3"/>
+        </svg>
       </div>
-      <p style="font-size:12px; color:var(--color-text-muted); margin-top:10px;">
-        Pastikan wajah terlihat jelas dan pencahayaan cukup sebelum capture.
-      </p>
+      <h2>Capture Wajah</h2>
+    </div>
+    <div class="camera-box">
+      <img src="/video_feed" alt="Camera Feed">
+    </div>
+    <div style="margin-top:18px; text-align:center;">
+      <button class="btn btn-primary" id="btn-capture" onclick="captureWajah()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+          <circle cx="12" cy="13" r="3"/>
+        </svg>
+        Capture Wajah
+      </button>
     </div>
   </div>
 

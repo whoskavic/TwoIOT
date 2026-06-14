@@ -7,13 +7,6 @@ function escHtml(str) {
     .replace(/>/g, '&gt;');
 }
 
-function formatDate(str) {
-  if (!str) return '—';
-  return new Date(str).toLocaleDateString('id-ID', {
-    day: '2-digit', month: 'short', year: 'numeric'
-  });
-}
-
 function showToast(msg, type = 'success') {
   const el = document.createElement('div');
   el.className = `toast ${type}`;
@@ -22,23 +15,37 @@ function showToast(msg, type = 'success') {
   setTimeout(() => el.remove(), 3200);
 }
 
+function avatarHtml(name) {
+  let h = 0;
+  for (const c of name) h = (h * 31 + c.charCodeAt(0)) % 360;
+  const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  return `<div class="avatar" style="width:36px;height:36px;background:oklch(82% .16 ${h});color:oklch(32% .16 ${h});font-size:13px;">${escHtml(initials)}</div>`;
+}
+
+const SVG_TRASH = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`;
+
 function renderTable(students) {
   const tbody = document.getElementById('students-tbody');
   if (students.length === 0) {
-    tbody.innerHTML = '<tr class="empty-row"><td colspan="6">Belum ada mahasiswa terdaftar.</td></tr>';
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="5">Belum ada mahasiswa terdaftar.</td></tr>';
     return;
   }
   tbody.innerHTML = students.map((s, i) => `
     <tr>
       <td>${i + 1}</td>
-      <td><strong>${escHtml(s.nama)}</strong></td>
-      <td>${escHtml(s.nim)}</td>
-      <td>${escHtml(s.kode_kelas)}</td>
-      <td>${formatDate(s.created_at)}</td>
       <td>
-        <button class="btn btn-danger"
-          onclick="hapusMahasiswa(${s.id}, ${JSON.stringify(s.nama)})">
-          🗑️ Hapus
+        <div class="student-cell">
+          ${avatarHtml(s.nama)}
+          <strong>${escHtml(s.nama)}</strong>
+        </div>
+      </td>
+      <td style="font-family:var(--mono);font-size:13px;">${escHtml(s.nim)}</td>
+      <td><span class="kelas-chip">${escHtml(s.kode_kelas)}</span></td>
+      <td>
+        <button class="btn btn-danger" style="padding:8px 12px;"
+          onclick="hapusMahasiswa(${s.id}, ${JSON.stringify(s.nama)})"
+          title="Hapus mahasiswa">
+          ${SVG_TRASH}
         </button>
       </td>
     </tr>
@@ -52,7 +59,7 @@ async function loadStudents() {
     renderTable(allStudents);
   } catch (e) {
     document.getElementById('students-tbody').innerHTML =
-      '<tr class="empty-row"><td colspan="6" style="color:var(--color-danger);">Gagal memuat data.</td></tr>';
+      '<tr class="empty-row"><td colspan="5" style="color:var(--color-danger);">Gagal memuat data.</td></tr>';
   }
 }
 
