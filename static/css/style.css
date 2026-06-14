@@ -599,3 +599,285 @@ tbody tr:last-child td { border-bottom: none; }
   .stat-grid { grid-template-columns: 1fr 1fr; }
   .cta-banner .btn { width: 100%; justify-content: center; }
 }
+
+/* ─── Two-column grids ───────────────────────────────────────────── */
+
+.reggrid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.absgrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 920px) {
+  .reggrid, .absgrid { grid-template-columns: 1fr; }
+}
+
+/* ─── Card header ────────────────────────────────────────────────── */
+
+.card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.card__head h2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -.02em;
+  margin: 0;
+}
+
+.card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.card__icon--neutral { background: #eef0f4; color: #3a3a52; }
+.card__icon--primary { background: #fde7ee; color: var(--color-primary); }
+.card__icon--green   { background: #eef6e2; color: #5f8a1f; }
+
+/* ─── Segmented control ──────────────────────────────────────────── */
+
+.seg {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.seg__opt {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-border-2);
+  background: #f6f6f4;
+  color: var(--color-text-muted);
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s;
+  letter-spacing: .01em;
+}
+
+.seg__opt:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: #fde7ee;
+}
+
+.seg__opt.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 6px 16px -8px rgba(197,26,74,.6);
+}
+
+/* ─── Button variants ────────────────────────────────────────────── */
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--color-border-2);
+  color: var(--color-text-muted);
+}
+
+.btn-ghost:hover {
+  background: #f0f0ee;
+  border-color: #c8c8c4;
+}
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+/* ─── Spinner ────────────────────────────────────────────────────── */
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Avatar ─────────────────────────────────────────────────────── */
+
+.avatar {
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.student-cell {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+/* ─── Class chip ─────────────────────────────────────────────────── */
+
+.kelas-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #eef0f4;
+  color: #3a3a52;
+  font-family: var(--mono);
+  letter-spacing: .02em;
+}
+
+/* ─── Count chip ─────────────────────────────────────────────────── */
+
+.count-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 11px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 700;
+  background: #eef6e2;
+  color: #3d6b14;
+}
+
+/* ─── Search row ─────────────────────────────────────────────────── */
+
+.search-row { margin-bottom: 18px; }
+
+.search-box { position: relative; }
+
+.search-box svg {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-faint);
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-family: var(--font);
+  outline: none;
+  background: #f6f6f4;
+  transition: .15s;
+  color: var(--color-text);
+}
+
+.search-box input:focus {
+  border-color: var(--color-primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(197,26,74,.10);
+}
+
+.search-box input::placeholder { color: #b6b6c2; }
+
+/* ─── Attendance log list ─────────────────────────────────────────── */
+
+.log-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.log-head h2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -.02em;
+  margin: 0;
+}
+
+.log-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0 -22px -22px;
+}
+
+.log-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 22px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.log-item:last-child { border-bottom: none; }
+
+.log-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.log-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.log-meta {
+  font-size: 12px;
+  color: var(--color-text-faint);
+  font-family: var(--mono);
+  margin-top: 2px;
+}
+
+.log-time {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  font-family: var(--mono);
+  flex-shrink: 0;
+}
+
+.log-empty {
+  text-align: center;
+  color: var(--color-text-faint);
+  padding: 40px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ─── Absensi page ───────────────────────────────────────────────── */
+
+.abs-status {
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  margin: 14px 0 18px;
+}
