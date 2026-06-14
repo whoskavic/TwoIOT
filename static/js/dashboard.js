@@ -17,7 +17,6 @@ async function loadDashboard() {
   try {
     const res  = await fetch('/api/dashboard');
     const data = await res.json();
-    document.getElementById('tanggal').textContent       = formatTanggal(data.tanggal);
     document.getElementById('total-students').textContent = data.total_students;
     document.getElementById('hadir-today').textContent    = data.hadir_today;
     document.getElementById('belum-hadir').textContent    = data.belum_hadir;

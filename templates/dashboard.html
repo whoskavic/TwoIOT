@@ -4,30 +4,41 @@
 {% block content %}
 <div class="page-header">
   <h1>Dashboard</h1>
-  <p>Ringkasan absensi hari ini</p>
-</div>
-
-<div class="date-badge">
-  📅 <span id="tanggal">Memuat...</span>
+  <p id="tanggal-sub">Memuat tanggal...</p>
 </div>
 
 <div class="stat-grid">
   <div class="stat-card">
-    <span class="stat-icon">👥</span>
+    <div class="stat-icon stat-icon--neutral">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+        <path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+      </svg>
+    </div>
     <div>
       <p class="stat-label">Total Mahasiswa</p>
       <p class="stat-value" id="total-students">—</p>
     </div>
   </div>
   <div class="stat-card">
-    <span class="stat-icon">✅</span>
+    <div class="stat-icon stat-icon--green">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+        <polyline points="16 11 18 13 22 9"/>
+      </svg>
+    </div>
     <div>
       <p class="stat-label">Hadir Hari Ini</p>
       <p class="stat-value" id="hadir-today">—</p>
     </div>
   </div>
   <div class="stat-card">
-    <span class="stat-icon">❌</span>
+    <div class="stat-icon stat-icon--red">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+        <line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/>
+      </svg>
+    </div>
     <div>
       <p class="stat-label">Belum Hadir</p>
       <p class="stat-value" id="belum-hadir">—</p>
@@ -35,8 +46,28 @@
   </div>
 </div>
 
+<div class="cta-banner">
+  <div class="cta-banner__txt">
+    <h3>Mulai sesi absensi hari ini</h3>
+    <p>Kamera Raspberry Pi siap mengenali wajah mahasiswa secara real-time.</p>
+  </div>
+  <a href="/absensi" class="btn btn-primary btn-large">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+      <path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+      <path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/>
+    </svg>
+    MULAI ABSENSI
+  </a>
+</div>
+
 <div class="card">
-  <p class="section-title">Log Absensi Hari Ini</p>
+  <p class="section-title">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-2px;margin-right:6px;color:var(--color-primary)">
+      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+    </svg>
+    Kehadiran Hari Ini
+  </p>
   <div class="table-wrapper">
     <table>
       <thead>
@@ -58,4 +89,9 @@
 
 {% block scripts %}
 <script src="/static/js/dashboard.js"></script>
+<script>
+  // Set subtitle date
+  document.getElementById('tanggal-sub').textContent =
+    new Date().toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+</script>
 {% endblock %}
