@@ -230,7 +230,7 @@ Base URL: `http://<host>:5000`
 **POST `/api/students`** — body JSON:
 ```json
 {
-  "nama": "Adelia Putri Maharani",
+  "nama": "Bruce Wayne",
   "nim": "2110511001",
   "kode_kelas": "IF-3A",
   "face_encoding_b64": "<base64 dari /api/capture>"
