@@ -80,6 +80,7 @@ TwoIOT/
 │
 ├── static/
 │   ├── css/style.css       # CSS untuk Flask templates
+│   ├── fonts/fonts.css     # Deklarasi font lokal (Plus Jakarta Sans, JetBrains Mono)
 │   ├── js/
 │   │   ├── dashboard.js
 │   │   ├── students.js
@@ -119,7 +120,6 @@ aiofiles>=23.0.0
 face-recognition>=1.3.0
 dlib>=19.24.0
 numpy>=1.24.0
-pandas>=2.0.0
 opencv-python>=4.8.0
 picamera2>=0.3.18
 ```
@@ -225,12 +225,12 @@ Base URL: `http://<host>:5000`
 |---|---|---|
 | `GET` | `/api/students` | Daftar semua mahasiswa |
 | `POST` | `/api/students` | Daftarkan mahasiswa baru |
-| `DELETE` | `/api/students/<id>` | Hapus mahasiswa |
+| `DELETE` | `/api/students/{id}` | Hapus mahasiswa |
 
 **POST `/api/students`** — body JSON:
 ```json
 {
-  "nama": "Adelia Putri Maharani",
+  "nama": "Bruce Wayne",
   "nim": "2110511001",
   "kode_kelas": "IF-3A",
   "face_encoding_b64": "<base64 dari /api/capture>"
@@ -341,7 +341,7 @@ Constraint `UNIQUE(student_id, tanggal)` mencegah double absen dalam satu hari.
 
 ### Toleransi pengenalan wajah
 
-Di `face_utils.py` baris 7:
+Di `face_utils.py` baris 10:
 
 ```python
 TOLERANCE = 0.5   # 0.4 = ketat, 0.6 = longgar
@@ -353,7 +353,7 @@ Rentang yang disarankan: **0.45 – 0.55**.
 
 ### Resolusi kamera
 
-Di `camera.py` baris 133:
+Di `camera.py` baris 132:
 
 ```python
 camera = CameraManager(width=640, height=480)
