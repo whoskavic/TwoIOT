@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Register Mahasiswa{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Register Mahasiswa</h1>
+  <p>Daftarkan mahasiswa baru beserta data wajah</p>
+</div>
+
+<div class="two-col">
+
+  <!-- Left: Form -->
+  <div>
+    <div class="card">
+      <p class="section-title">Data Mahasiswa</p>
+
+      <div class="form-group">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="nama" placeholder="Masukkan nama lengkap">
+      </div>
+      <div class="form-group">
+        <label for="nim">NIM</label>
+        <input type="text" id="nim" placeholder="Masukkan NIM">
+      </div>
+      <div class="form-group">
+        <label for="kode_kelas">Kode Kelas</label>
+        <input type="text" id="kode_kelas" placeholder="Contoh: TI-3A">
+      </div>
+
+      <div id="capture-status"></div>
+
+      <div style="display:flex; gap:12px; margin-top:22px; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="btn-capture" onclick="captureWajah()">
+          📷 Capture Wajah
+        </button>
+        <button class="btn btn-success" id="btn-save" disabled onclick="simpanMahasiswa()">
+          💾 Simpan Mahasiswa
+        </button>
+      </div>
+
+      <div id="form-status"></div>
+    </div>
+  </div>
+
+  <!-- Right: Camera -->
+  <div>
+    <div class="card">
+      <p class="section-title">Preview Kamera</p>
+      <div class="camera-box">
+        <img src="/video_feed" alt="Camera Feed">
+      </div>
+      <p style="font-size:12px; color:var(--color-text-muted); margin-top:10px;">
+        Pastikan wajah terlihat jelas dan pencahayaan cukup sebelum capture.
+      </p>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/register.js"></script>
+{% endblock %}

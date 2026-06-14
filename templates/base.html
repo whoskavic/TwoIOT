@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Two IOT{% endblock %} — Face Attendance</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon">📡</span>
+        <span class="logo-text">Two IOT</span>
+      </div>
+      <p class="logo-subtitle">Face Recognition Attendance</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="/"
+         class="nav-item {{ 'active' if request.path == '/' else '' }}">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="/mahasiswa"
+         class="nav-item {{ 'active' if request.path == '/mahasiswa' else '' }}">
+        <span class="nav-icon">👥</span>
+        <span>Data Mahasiswa</span>
+      </a>
+      <a href="/register"
+         class="nav-item {{ 'active' if request.path == '/register' else '' }}">
+        <span class="nav-icon">➕</span>
+        <span>Register</span>
+      </a>
+      <a href="/absensi"
+         class="nav-item {{ 'active' if request.path == '/absensi' else '' }}">
+        <span class="nav-icon">📋</span>
+        <span>Absensi</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>Two IOT v1.0</p>
+      <p>Raspberry Pi 5 · AI Camera</p>
+    </div>
+  </aside>
+
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

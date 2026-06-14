@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Dashboard</h1>
+  <p>Ringkasan absensi hari ini</p>
+</div>
+
+<div class="date-badge">
+  📅 <span id="tanggal">Memuat...</span>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <span class="stat-icon">👥</span>
+    <div>
+      <p class="stat-label">Total Mahasiswa</p>
+      <p class="stat-value" id="total-students">—</p>
+    </div>
+  </div>
+  <div class="stat-card">
+    <span class="stat-icon">✅</span>
+    <div>
+      <p class="stat-label">Hadir Hari Ini</p>
+      <p class="stat-value" id="hadir-today">—</p>
+    </div>
+  </div>
+  <div class="stat-card">
+    <span class="stat-icon">❌</span>
+    <div>
+      <p class="stat-label">Belum Hadir</p>
+      <p class="stat-value" id="belum-hadir">—</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <p class="section-title">Log Absensi Hari Ini</p>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>NIM</th>
+          <th>Kode Kelas</th>
+          <th>Waktu</th>
+        </tr>
+      </thead>
+      <tbody id="attendance-tbody">
+        <tr class="empty-row"><td colspan="5">Memuat data...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/dashboard.js"></script>
+{% endblock %}

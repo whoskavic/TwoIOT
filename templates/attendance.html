@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Absensi{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Absensi</h1>
+  <p>Scan wajah untuk mencatat kehadiran</p>
+</div>
+
+<div class="two-col">
+
+  <!-- Left: Camera + Scan -->
+  <div>
+    <div class="card" style="text-align:center;">
+      <p class="section-title" style="text-align:left;">Live Camera</p>
+      <div class="camera-box">
+        <img src="/video_feed_annotated" alt="Camera with Face Detection">
+      </div>
+
+      <div style="margin-top:22px;">
+        <button class="btn btn-primary btn-large" id="btn-scan" onclick="scanAbsensi()">
+          🔍 SCAN ABSENSI
+        </button>
+      </div>
+
+      <div id="scan-result" class="result-card"></div>
+    </div>
+  </div>
+
+  <!-- Right: Attendance Log -->
+  <div>
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+        <p class="section-title" style="margin-bottom:0;">Log Absensi Hari Ini</p>
+        <span style="font-size:12px; color:var(--color-text-muted);">⏱ Auto-refresh 10s</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>NIM</th>
+              <th>Kode Kelas</th>
+              <th>Waktu</th>
+            </tr>
+          </thead>
+          <tbody id="attendance-log-tbody">
+            <tr class="empty-row"><td colspan="5">Memuat data...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/attendance.js"></script>
+{% endblock %}

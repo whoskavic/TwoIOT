@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Data Mahasiswa{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Data Mahasiswa</h1>
+  <p>Daftar seluruh mahasiswa terdaftar</p>
+</div>
+
+<div class="card">
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="🔍  Cari nama atau NIM...">
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>NIM</th>
+          <th>Kode Kelas</th>
+          <th>Tanggal Daftar</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="students-tbody">
+        <tr class="empty-row"><td colspan="6">Memuat data...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/students.js"></script>
+{% endblock %}
